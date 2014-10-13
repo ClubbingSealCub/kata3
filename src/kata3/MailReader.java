@@ -1,12 +1,9 @@
 package kata3;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class MailReader {
 
@@ -23,15 +20,18 @@ public class MailReader {
             ArrayList<String> domainList = new ArrayList<>();
             while (true) {
                 String line = reader.readLine();
-                if (line == null) break;
-                domainList.add(line.split("@")[1]);
+                if (line == null) {
+                    break;
+                }
+                domainList.add(line.split("@")[1].toLowerCase());
             }
             reader.close();
-            return null;
+            return domainList.toArray(new String[domainList.size()]);
         } catch (IOException ex) {
             try {
                 reader.close();
-            } catch (IOException ex1) {}
+            } catch (IOException ex1) {
+            }
             return new String[0];
         }
     }
