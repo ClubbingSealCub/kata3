@@ -21,14 +21,19 @@ public class MailReader {
         try {
             reader = new BufferedReader(new FileReader(filePath));
             ArrayList<String> domainList = new ArrayList<>();
+            while (true) {
+                String line = reader.readLine();
+                if (line == null) break;
+                domainList.add(line.split("@")[1]);
+            }
             reader.close();
+            return null;
         } catch (IOException ex) {
             try {
                 reader.close();
             } catch (IOException ex1) {}
             return new String[0];
         }
-        return null;
     }
 
     public String getFilepath() {
