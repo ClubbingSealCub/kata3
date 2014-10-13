@@ -1,7 +1,11 @@
 package kata3;
 
-import kata3.Kata3.Histogram;
+public class HistogramViewer<Type> {
 
-public class HistogramViewer <Type>{
-    public void print(Histogram<Type> histogram){}; 
+    public void print(Histogram<Type> histogram) {
+        for (Type type : histogram.keySet()) {
+            System.out.println(type + " -> " + histogram.get(type));
+        }
+    }
+;
 }
