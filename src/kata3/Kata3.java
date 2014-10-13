@@ -5,6 +5,9 @@ import java.util.Map;
 
 public class Kata3 {
 
+    public class Histogram<Type> extends HashMap<Type, Integer> {
+    }
+
     public Map.Entry<Object, Integer> maxEntry(Object[] vFuente) {
         Map<Object, Integer> mapa = new HashMap() {
         };
