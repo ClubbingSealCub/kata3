@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,16 +20,15 @@ public class MailReader {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader(filePath));
-            return null;
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(MailReader.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
+            ArrayList<String> domainList = new ArrayList<>();
+            reader.close();
+        } catch (IOException ex) {
             try {
                 reader.close();
-            } catch (IOException ex) {
-                Logger.getLogger(MailReader.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } catch (IOException ex1) {}
+            return new String[0];
         }
+        return null;
     }
 
     public String getFilepath() {
