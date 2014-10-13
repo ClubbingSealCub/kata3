@@ -1,11 +1,12 @@
 package kata3;
 
-import java.lang.ProcessBuilder.Redirect.Type;
-import kata3.Kata3.Histogram;
-
-public class HistogramBuilder {
+public class HistogramBuilder<Type> {
 
     public Histogram<Type> build(Type[] types) {
-        return null;
+        Histogram<Type> histogram = new Histogram<>();
+        for (Type type : types) {
+            histogram.put(type, histogram.get(type) + 1);
+        }
+        return histogram;
     }
 }
